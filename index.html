@@ -2,11 +2,41 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Atividade 1 - Programação Web</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Pessoal - Contato</title>
 </head>
 <body>
-    <h1>Olá, Mundo!</h1>
-    <p>Seja bem-vindo à minha primeira página Web desta disciplina.</p>
-    <p>Desenvolvido por: André Nunes de Carvalho</p>
+
+    <section>
+        <h2>Entre em contato</h2>
+
+        <form>
+            <fieldset>
+                <legend>Informações de Contato</legend>
+
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome">
+                <br><br>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <br><br>
+
+                <label for="assunto">Assunto:</label>
+                <input type="text" id="assunto" name="assunto">
+                <br><br>
+
+                <label for="mensagem">Mensagem:</label>
+                <br>
+                <textarea id="mensagem" name="mensagem" rows="5" cols="40"></textarea>
+                <br><br>
+
+                <button type="submit">Enviar</button>
+                <button type="reset">Limpar</button>
+
+            </fieldset>
+        </form>
+    </section>
+
 </body>
 </html>
