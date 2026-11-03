@@ -3,40 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Pessoal - Contato</title>
+    <title>Página Pessoal - André Nunes de Carvalho</title>
+    <!-- Requisito 1: Vinculação da folha de estilos externa -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <section>
-        <h2>Entre em contato</h2>
+    <!-- Requisito 2 e 7: Cabeçalho e Navegação -->
+    <header id="cabecalho-principal">
+        <h1>André Nunes de Carvalho</h1>
+        <p class="subtitulo-cabecalho">Estudante de Informática para Internet & Engenharia de Software</p>
+        <nav class="menu-navegacao">
+            <ul>
+                <li><a href="index.html" class="ativo">Início</a></li>
+                <li><a href="sobre.html">Sobre Mim</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
 
-        <form>
-            <fieldset>
-                <legend>Informações de Contato</legend>
+    <!-- Conteúdo Principal -->
+    <main class="conteudo-principal">
 
-                <label for="nome">Nome:</label>
-                <input type="text" id="nome" name="nome">
-                <br><br>
+        <!-- Requisito 3 e 4: Apresentação com Imagem e Texto -->
+        <section class="secao-cartao">
+            <h2>Apresentação</h2>
+            <img src="img/foto.jpg" alt="Foto de André Nunes de Carvalho" class="foto-perfil">
+            <p>Bem-vindo à minha página pessoal! Esta página foi desenvolvida na disciplina de <strong>Programação Web I</strong> no IF Sudeste MG.</p>
+        </section>
 
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-                <br><br>
+        <!-- Requisito 3: Lista de Interesses -->
+        <section class="secao-cartao">
+            <h2>Meus Interesses & Tecnologias</h2>
+            <ul class="lista-interesses">
+                <li>Desenvolvimento Web (HTML5 & CSS3)</li>
+                <li>Lógica de Programação e Algoritmos</li>
+                <li>Banco de Dados e Engenharia de Software</li>
+                <li>Leitura de Romances de Mistério</li>
+            </ul>
+        </section>
 
-                <label for="assunto">Assunto:</label>
-                <input type="text" id="assunto" name="assunto">
-                <br><br>
+        <!-- Requisito 5: Formulário de Contato com FIELDSET e LEGEND (Seu código adaptado) -->
+        <section id="contato" class="secao-cartao secao-formulario">
+            <h2>Entre em contato</h2>
 
-                <label for="mensagem">Mensagem:</label>
-                <br>
-                <textarea id="mensagem" name="mensagem" rows="5" cols="40"></textarea>
-                <br><br>
+            <form action="#" method="post">
+                <fieldset>
+                    <legend>Informações de Contato</legend>
 
-                <button type="submit">Enviar</button>
-                <button type="reset">Limpar</button>
+                    <div class="campo-grupo">
+                        <label for="nome">Nome:</label>
+                        <input type="text" id="nome" name="nome" placeholder="Seu nome completo">
+                    </div>
 
-            </fieldset>
-        </form>
-    </section>
+                    <div class="campo-grupo">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" placeholder="seu.email@exemplo.com" required>
+                    </div>
+
+                    <div class="campo-grupo">
+                        <label for="assunto">Assunto:</label>
+                        <input type="text" id="assunto" name="assunto" placeholder="Assunto da mensagem">
+                    </div>
+
+                    <div class="campo-grupo">
+                        <label for="mensagem">Mensagem:</label>
+                        <textarea id="mensagem" name="mensagem" rows="5" placeholder="Digite sua mensagem aqui..."></textarea>
+                    </div>
+
+                    <div class="botoes-grupo">
+                        <button type="submit" class="btn btn-enviar">Enviar</button>
+                        <button type="reset" class="btn btn-limpar">Limpar</button>
+                    </div>
+
+                </fieldset>
+            </form>
+        </section>
+
+    </main>
+
+    <!-- Requisito 7: Rodapé -->
+    <footer id="rodape-principal">
+        <p>&copy; 2026 André Nunes de Carvalho - IF Sudeste MG | Barbacena</p>
+    </footer>
 
 </body>
 </html>
