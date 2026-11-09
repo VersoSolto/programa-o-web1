@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Pessoal - André Nunes de Carvalho</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- REQUISITO 4: Cabeçalho (Ocupará todas as colunas do Grid) -->
+    <header id="cabecalho-principal">
+        <h1>André Nunes de Carvalho</h1>
+        <p class="subtitulo-cabecalho">Estudante de Informática para Internet & Engenharia de Software</p>
+    </header>
+
+    <!-- REQUISITO 4: Navegação (Também ocupará todas as colunas do Grid, mas os botões usam Flexbox) -->
+    <nav class="menu-navegacao">
+        <ul>
+            <li><a href="index.html" class="ativo">Início</a></li>
+            <li><a href="sobre.html">Sobre Mim</a></li>
+            <li><a href="#contato">Contato</a></li>
+        </ul>
+    </nav>
+
+    <!-- REQUISITO 4: Conteúdo Principal (Ficará preso na Coluna Central do Grid) -->
+    <main class="conteudo-principal">
+
+        <section class="secao-cartao">
+            <h2>Apresentação</h2>
+            <img src="img/foto.jpeg" alt="Foto de André Nunes de Carvalho" class="foto-perfil">
+            <p>Bem-vindo à minha página pessoal! Esta página foi desenvolvida na disciplina de <strong>Programação Web I</strong>.</p>
+        </section>
+
+        <section class="secao-cartao">
+            <h2>Meus Interesses & Tecnologias</h2>
+            <ul class="lista-interesses">
+                <li>Animes, Mangás e Cultura Geek</li>
+                <li>Desenvolvimento Web (HTML5 & CSS3)</li>
+                <li>Lógica de Programação e Algoritmos</li>
+                <li>Banco de Dados e Engenharia de Software</li>
+                <li>Leitura de Romances de Mistério</li>
+                <li>Jogos de Estratégia e Quebra-Cabeças</li>
+                <li>Gosto de Paquerar a Vívian lá de Sorocaba (item indispensável da lista)</li>
+            </ul>
+        </section>
+
+        <!-- REQUISITO 1 e 2: Nova Seção Organizada com GRID LAYOUT -->
+        <section class="secao-cartao">
+            <h2>Arsenal Tecnológico & Projetos</h2>
+            
+            <div class="grid-cartoes">
+                
+                <!-- REQUISITO 3: Cartão Organizado internamente com FLEXBOX -->
+                <article class="cartao-habilidade">
+                    <h3 class="cartao-titulo">HTML5 & CSS3</h3>
+                    <p class="cartao-conteudo">O "Haki do Armamento" do front-end. Utilizados para criar a estrutura semântica e a estilização visual completa desta página temática.</p>
+                    <div class="cartao-tags">
+                        <span>#Web</span>
+                        <span>#Frontend</span>
+                        <span>#Design</span>
+                    </div>
+                </article>
+
+                <article class="cartao-habilidade">
+                    <h3 class="cartao-titulo">Lógica com Python</h3>
+                    <p class="cartao-conteudo">A "Espada da Razão". Resolução de algoritmos diários e estudos práticos utilizando a IDE Thonny para construir uma base sólida.</p>
+                    <div class="cartao-tags">
+                        <span>#Python</span>
+                        <span>#Lógica</span>
+                        <span>#Algoritmos</span>
+                    </div>
+                </article>
+
+                <article class="cartao-habilidade">
+                    <h3 class="cartao-titulo">Bancos de Dados</h3>
+                    <p class="cartao-conteudo">Como ler um "Poneglyph". Estudos teóricos focados em modelagem de dados relacional, diagrama entidade-relacionamento e noções em SQL.</p>
+                    <div class="cartao-tags">
+                        <span>#SQL</span>
+                        <span>#Modelagem</span>
+                        <span>#Dados</span>
+                    </div>
+                </article>
+
+                <article class="cartao-habilidade">
+                    <h3 class="cartao-titulo">Mercado Imobiliário</h3>
+                    <p class="cartao-conteudo">Habilidade de "Navegação" no mundo real. Prospecção em Barbacena, análise de tráfego pago, captação e contato direto com clientes.</p>
+                    <div class="cartao-tags">
+                        <span>#Vendas</span>
+                        <span>#RE/MAX</span>
+                        <span>#Negócios</span>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- Formulário de Contato -->
+        <section id="contato" class="secao-cartao secao-formulario">
+            <h2>Entre em contato</h2>
+            <form action="#" method="post">
+                <fieldset>
+                    <legend>Informações de Contato</legend>
+
+                    <div class="campo-grupo">
+                        <label for="nome">Nome:</label>
+                        <input type="text" id="nome" name="nome" placeholder="Seu nome completo">
+                    </div>
+
+                    <div class="campo-grupo">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" placeholder="seu.email@exemplo.com" required>
+                    </div>
+
+                    <div class="campo-grupo">
+                        <label for="assunto">Assunto:</label>
+                        <input type="text" id="assunto" name="assunto" placeholder="Assunto da mensagem">
+                    </div>
+
+                    <div class="campo-grupo">
+                        <label for="mensagem">Mensagem:</label>
+                        <textarea id="mensagem" name="mensagem" rows="5" placeholder="Digite sua mensagem aqui..."></textarea>
+                    </div>
+
+                    <div class="botoes-grupo">
+                        <button type="submit" class="btn btn-enviar">Enviar</button>
+                        <button type="reset" class="btn btn-limpar">Limpar</button>
+                    </div>
+                </fieldset>
+            </form>
+        </section>
+
+    </main>
+
+    <!-- REQUISITO 4: Rodapé (Ocupará todas as colunas do Grid) -->
+    <footer id="rodape-principal">
+        <p>&copy; 2026 André Nunes de Carvalho - IF Sudeste MG | Barbacena</p>
+    </footer>
+
+</body>
+</html>
