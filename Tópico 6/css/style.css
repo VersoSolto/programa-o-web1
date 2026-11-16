@@ -1,0 +1,484 @@
+/* ==========================================================================
+   1. RESET UNIVERSAL, BOX MODEL E IMAGENS RESPONSIVAS
+   ========================================================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap');
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ==========================================================================
+   2. ESTRUTURA GERAL MOBILE-FIRST (ESTILO GRAND LINE)
+   ========================================================================== */
+body {
+  font-family: 'Montserrat', Arial, sans-serif;
+  background-color: #0b1a30;
+  background-image: radial-gradient(#162d50 1px, transparent 1px);
+  background-size: 20px 20px;
+  color: #2b2b2b;
+  line-height: 1.6;
+
+  /* Mobile-first: 1 única coluna ocupando 100% da largura disponível */
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto 1fr auto;
+  min-height: 100vh;
+}
+
+/* ==========================================================================
+   3. CABEÇALHO
+   ========================================================================== */
+#cabecalho-principal {
+  grid-column: 1 / -1;
+  grid-row: 1;
+
+  background-color: #06101e;
+  background-image: radial-gradient(#162d50 1px, transparent 1px);
+  background-size: 20px 20px;
+  color: #ffffff;
+  text-align: center;
+  padding: 25px 15px 15px 15px;
+}
+
+#cabecalho-principal::before {
+  content: "⛵ 👒";
+  font-size: 2rem;
+  display: block;
+  margin-bottom: -5px;
+  animation: navegar 4s ease-in-out infinite alternate;
+}
+
+@keyframes navegar {
+  0% { transform: translateY(0) rotate(-2deg); }
+  100% { transform: translateY(-8px) rotate(3deg); }
+}
+
+#cabecalho-principal h1 {
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: #ffca28;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  text-shadow: 2px 2px 0px #d92323;
+  margin-bottom: 5px;
+}
+
+.subtitulo-cabecalho {
+  font-size: 0.9rem;
+  color: #a0aec0;
+  font-style: italic;
+}
+
+/* ==========================================================================
+   4. MENU DE NAVEGAÇÃO (Flexbox: vertical no celular -> horizontal em telas maiores)
+   ========================================================================== */
+.menu-navegacao {
+  grid-column: 1 / -1;
+  grid-row: 2;
+
+  background-color: #06101e;
+  padding: 0 15px 20px 15px;
+  border-bottom: 5px solid #d92323;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.menu-navegacao ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.menu-navegacao li {
+  width: 100%;
+  max-width: 280px;
+  text-align: center;
+}
+
+.menu-navegacao a {
+  display: block;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  padding: 10px 18px;
+  border-radius: 20px;
+  background-color: #162d50;
+  border: 2px solid #ffca28;
+  transition: all 0.3s ease;
+}
+
+.menu-navegacao a:hover {
+  background-color: #d92323;
+  color: #ffffff;
+  border-color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(217, 35, 35, 0.5);
+}
+
+.menu-navegacao a.ativo {
+  background-color: #ffca28;
+  color: #06101e;
+}
+
+/* ==========================================================================
+   5. CONTEÚDO PRINCIPAL
+   ========================================================================== */
+.conteudo-principal {
+  grid-column: 1;
+  grid-row: 3;
+
+  padding: 25px 15px;
+  width: 100%;
+}
+
+/* ==========================================================================
+   6. CARTÕES DE SEÇÃO
+   ========================================================================== */
+.secao-cartao {
+  background-color: #f9f3e3;
+  border: 3px solid #8c6d3f;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 25px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.secao-cartao h2 {
+  color: #06101e;
+  font-size: 1.25rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+  border-bottom: 3px dashed #d92323;
+  padding-bottom: 8px;
+}
+
+.secao-cartao h2::before {
+  content: "฿ ";
+  color: #d92323;
+  font-weight: 900;
+}
+
+/* ==========================================================================
+   7. GRID LAYOUT PARA OS CARTÕES DE HABILIDADES (1 coluna no mobile)
+   ========================================================================== */
+.grid-cartoes {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+/* ==========================================================================
+   8. FLEXBOX DENTRO DOS CARTÕES
+   ========================================================================== */
+.cartao-habilidade {
+  background-color: #f4ebd0;
+  border: 2px solid #8c6d3f;
+  border-radius: 8px;
+  padding: 18px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  justify-content: space-between;
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cartao-habilidade:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(140, 109, 63, 0.5);
+}
+
+.cartao-titulo {
+  color: #d92323;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+}
+
+.cartao-conteudo {
+  font-size: 0.95rem;
+  flex-grow: 1;
+}
+
+.cartao-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.cartao-tags span {
+  background-color: #162d50;
+  color: #ffca28;
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 12px;
+  text-transform: uppercase;
+}
+
+/* ==========================================================================
+   9. ELEMENTOS DE DESIGN (Foto, Lista, Formulário)
+   ========================================================================== */
+.foto-perfil {
+  width: 130px;
+  height: 130px;
+  object-fit: cover;
+  border: 5px solid #d92323;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto 15px auto;
+  box-shadow: 0 0 15px rgba(217, 35, 35, 0.4);
+  transition: transform 0.3s ease;
+}
+
+.foto-perfil:hover {
+  transform: scale(1.08) rotate(4deg);
+}
+
+.lista-interesses {
+  list-style: none;
+  padding-left: 0;
+}
+
+.lista-interesses li {
+  margin-bottom: 12px;
+  padding: 10px 12px 10px 38px;
+  background-color: #efe5cb;
+  border-left: 5px solid #166534;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  position: relative;
+}
+
+.lista-interesses li::before {
+  content: "⚔️";
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.1rem;
+}
+
+fieldset {
+  border: 3px double #8c6d3f;
+  border-radius: 10px;
+  padding: 18px;
+  background-color: #f4ebd0;
+}
+
+legend {
+  font-weight: 900;
+  color: #d92323;
+  text-transform: uppercase;
+  padding: 0 10px;
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+
+.campo-grupo {
+  margin-bottom: 16px;
+}
+
+.campo-grupo label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: #06101e;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
+
+.campo-grupo input,
+.campo-grupo textarea {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #8c6d3f;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: inherit;
+  background-color: #ffffff;
+}
+
+.campo-grupo input:focus,
+.campo-grupo textarea:focus {
+  outline: none;
+  border-color: #d92323;
+  box-shadow: 0 0 8px rgba(217, 35, 35, 0.3);
+}
+
+.botoes-grupo {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.btn {
+  width: 100%;
+  padding: 12px 25px;
+  font-size: 1rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-enviar {
+  background-color: #d92323;
+  color: #ffffff;
+  box-shadow: 0 4px 0px #901313;
+}
+
+.btn-enviar:hover {
+  background-color: #ffca28;
+  color: #06101e;
+  box-shadow: 0 4px 0px #c79a00;
+  transform: translateY(-2px);
+}
+
+.btn-limpar {
+  background-color: #8c6d3f;
+  color: #ffffff;
+  box-shadow: 0 4px 0px #5c4728;
+}
+
+.btn-limpar:hover {
+  background-color: #a6834c;
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   10. RODAPÉ
+   ========================================================================== */
+#rodape-principal {
+  grid-column: 1 / -1;
+  grid-row: 4;
+
+  background-color: #06101e;
+  color: #ffca28;
+  text-align: center;
+  padding: 20px 15px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  border-top: 4px solid #d92323;
+}
+
+/* ==========================================================================
+   11. MEDIA QUERIES (ADAPTAÇÃO PARA TABLETS E COMPUTADORES)
+   ========================================================================== */
+
+/* Breakpoint 1: Telas a partir de 600px (Tablets e smartphones na horizontal) */
+@media (min-width: 600px) {
+  #cabecalho-principal {
+    padding: 35px 20px 15px 20px;
+  }
+
+  #cabecalho-principal::before {
+    font-size: 2.5rem;
+  }
+
+  #cabecalho-principal h1 {
+    font-size: 2.1rem;
+    letter-spacing: 2px;
+  }
+
+  .subtitulo-cabecalho {
+    font-size: 1rem;
+  }
+
+  /* Menu passa a ficar horizontal */
+  .menu-navegacao ul {
+    flex-direction: row;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .menu-navegacao li {
+    width: auto;
+    max-width: none;
+  }
+
+  .menu-navegacao a {
+    display: inline-block;
+    padding: 8px 18px;
+  }
+
+  .conteudo-principal {
+    padding: 35px 25px;
+  }
+
+  .secao-cartao {
+    padding: 30px;
+    margin-bottom: 30px;
+  }
+
+  .secao-cartao h2 {
+    font-size: 1.5rem;
+  }
+
+  /* Cartões de habilidades passam de 1 para 2 colunas */
+  .grid-cartoes {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .foto-perfil {
+    width: 150px;
+    height: 150px;
+  }
+
+  fieldset {
+    padding: 25px;
+  }
+
+  /* Botões do formulário ficam lado a lado */
+  .botoes-grupo {
+    flex-direction: row;
+    gap: 15px;
+  }
+
+  .btn {
+    width: auto;
+  }
+}
+
+/* Breakpoint 2: Telas a partir de 850px (Computadores / Desktop) */
+@media (min-width: 850px) {
+  /* Ativa o Grid de 3 colunas centralizando o conteúdo em até 800px */
+  body {
+    grid-template-columns: 1fr minmax(auto, 800px) 1fr;
+  }
+
+  .conteudo-principal {
+    grid-column: 2;
+    padding: 40px 20px;
+  }
+
+  #cabecalho-principal {
+    padding: 40px 20px 10px 20px;
+    background-image:
+      url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="%23ffca28" opacity="0.15"><path d="M56 40c-2 0-4 1-5 2-3-5-8-9-15-10 1-3 3-5 5-7h-8c-2 2-4 5-4 8-1 0-2 0-3 0-5 0-10 2-14 6-2-1-4-2-6-2-4 0-7 3-7 7 0 2 1 4 2 5-3 3-5 7-5 11h60c0-6-4-11-9-15-1 0-1-3 0-5zM32 6l-6 10h12L32 6z"/></svg>'),
+      radial-gradient(#162d50 1px, transparent 1px);
+    background-repeat: no-repeat, repeat;
+    background-position: right 30px center, center;
+    background-size: 140px auto, 20px 20px;
+  }
+
+  #cabecalho-principal h1 {
+    font-size: 2.4rem;
+  }
+}
