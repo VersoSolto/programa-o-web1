@@ -1,0 +1,93 @@
+<!-- Declara ao navegador que este arquivo segue o padrão HTML5 -->
+<!DOCTYPE html>
+
+<!-- Elemento raiz da página; lang="pt-BR" define o idioma para leitores de tela e buscadores -->
+<html lang="pt-BR">
+
+<!-- Cabeçalho técnico com metadados e recursos externos da página -->
+<head>
+    <!-- Garante a exibição correta de acentos e caracteres especiais (ç, ã, é, ฿) -->
+    <meta charset="UTF-8">
+
+    <!-- Essencial para o design responsivo: ajusta a largura de visualização à largura real da tela do dispositivo -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Título específico desta página na aba do navegador, diferenciando-a da página inicial -->
+    <title>Sobre Mim - André Nunes de Carvalho</title>
+
+    <!-- Reaproveita a mesma folha de estilos externa do index.html, garantindo identidade visual única sem duplicar código CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<!-- Corpo do documento: conteúdo visível na janela do navegador -->
+<body>
+
+    <!-- Cabeçalho semântico principal; mantém o mesmo 'id' para herdar exatamente o visual do index.html -->
+    <header id="cabecalho-principal">
+        <!-- Título principal da página -->
+        <h1>André Nunes de Carvalho</h1>
+        <!-- Subtítulo adaptado ao contexto desta página interna; &amp; representa o caractere '&' com segurança -->
+        <p class="subtitulo-cabecalho">Trajetória Profissional, Estudos &amp; Projetos</p>
+    </header>
+
+    <!-- Bloco semântico de navegação principal -->
+    <nav class="menu-navegacao">
+        <!-- Lista não ordenada que organiza os links do menu (empilhados no mobile e em linha a partir de 768px) -->
+        <ul>
+            <!-- Link relativo para voltar à página inicial; aqui ele não possui a classe "ativo" -->
+            <li><a href="index.html">Início</a></li>
+
+            <!-- A classe "ativo" foi movida para este item para indicar visualmente que o usuário está na página "Sobre Mim" -->
+            <li><a href="sobre.html" class="ativo">Sobre Mim</a></li>
+
+            <!-- Link combinado (página + âncora): sai de sobre.html, abre index.html e rola direto até a seção com id="contato" -->
+            <li><a href="index.html#contato">Contato</a></li>
+        </ul>
+    </nav>
+
+    <!-- Delimita o conteúdo exclusivo desta página e aplica a largura máxima centralizada definida no CSS -->
+    <main class="conteudo-principal">
+
+        <!-- Primeira seção temática estilizada como cartão -->
+        <section class="secao-cartao">
+            <!-- Subtítulo de segundo nível (recebe o símbolo ฿ via pseudo-elemento ::before no CSS) -->
+            <h2>A Minha Trajetória</h2>
+
+            <!-- Parágrafo de texto; quebras de linha e espaços extras feitos apenas para organizar o código HTML são ignorados pelo navegador -->
+            <p>Além do meu foco em Engenharia de Software e no curso Técnico em Informática para Internet no IF Sudeste MG, 
+                possuo formação em transações imobiliárias e atuo como corretor na RE/MAX em Barbacena. 
+                Minha rotina é pautada por disciplina diária: divido o tempo entre a tecnologia, o mercado imobiliário, 
+                os treinos pesados de musculação, as corridas matinais de 10 km, o estudo de inglês e a alimentação regrada. 
+                Para relaxar a mente, aprecio a leitura de romances de mistério (como Agatha Christie), animes, mangás e a companhia de gatos.</p>
+        </section>
+
+        <!-- Segunda seção temática -->
+        <section class="secao-cartao">
+            <h2>Habilidades Técnicas e Projetos</h2>
+
+            <!-- Reutiliza a classe "lista-interesses" do index.html, herdando automaticamente o fundo e o ícone de espadas (⚔️) -->
+            <ul class="lista-interesses">
+                <!-- <strong> destaca semanticamente o título de cada tópico dentro do item da lista (<li>) -->
+                <li><strong>Desenvolvimento Web (Em Aprendizado):</strong> Dando os primeiros passos na criação de layouts e estruturas com HTML5 e CSS3.</li>
+                <li><strong>Lógica &amp; Algoritmos (Prática Diária):</strong> Desenvolvendo a lógica de programação através de exercícios em VisuAlg e scripts simples em Python (Thonny).</li>
+                <li><strong>Bancos de Dados (Estudo de Base):</strong> Aprendendo a teoria de modelagem de dados relacional e noções de SQL.</li>
+                <li><strong>Análise Imobiliária &amp; Financeira:</strong> Aplicando o raciocínio analítico na rotina do mercado imobiliário e no estudo de métricas financeiras.</li>
+            </ul>
+        </section>
+
+    </main>
+
+    <!-- Rodapé semântico da página -->
+    <footer id="rodape-principal">
+        <!-- &copy; exibe o símbolo de direitos autorais (©) -->
+        <p>&copy; 2026 André Nunes de Carvalho - IF Sudeste MG | Barbacena</p>
+
+        <!-- target="_blank" abre o link em uma nova aba; rel="noopener noreferrer" é uma boa prática de segurança que impede a nova aba de acessar ou manipular a janela original -->
+        <p>Conheça o meu perfil no <a href="https://github.com/VersoSolto" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
+    </footer>
+
+<!-- Encerra o corpo visível do documento -->
+</body>
+
+<!-- Encerra o documento HTML -->
+</html>

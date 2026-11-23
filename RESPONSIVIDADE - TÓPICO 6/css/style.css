@@ -1,0 +1,515 @@
+/* Importa a fonte 'Montserrat' do Google Fonts nos pesos 400 (normal), 700 (negrito) e 900 (extra-negrito). Deve ficar sempre na primeira linha do CSS. */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap');
+
+/* ==========================================================================
+1. RESET UNIVERSAL E BOX MODEL
+   ========================================================================== */
+/* O asterisco (*) seleciona TODOS os elementos HTML da página . */
+* {
+  /* Faz com que 'width' e 'height' já incluam 'padding' e 'border', evitando que os elementos estourem a largura da tela. */
+  box-sizing: border-box;
+  /* Remove as margens externas padrão que os navegadores aplicam em títulos, parágrafos e body. */
+  margin: 0;
+  /* Remove os espaçamentos internos padrão (como o recuo automático das listas <ul>). */
+  padding: 0;
+}
+
+/* Requisito 1: Garante que nenhuma imagem ultrapasse o espaço do seu contêiner em telas pequenas. */
+img {
+  /* Limita a largura máxima da imagem a 100% da largura do elemento onde ela está inserida. */
+  max-width: 100%;
+  /* Ajusta a altura proporcionalmente à largura, impedindo que a foto fique esticada ou achatada. */
+  height: auto;
+}
+
+/* ==========================================================================
+2. REQUISITO 4: GRID LAYOUT DA ESTRUTURA GERAL DA PÁGINA (ESTILO GRAND LINE)
+   ========================================================================== */
+body {
+  /* Define a fonte principal e fontes alternativas caso a internet falhe ao carregar o Google Fonts. */
+  font-family: 'Montserrat', Arial, sans-serif;
+  /* Cor de fundo azul-marinho profundo. */
+  background-color: #0b1a30;
+  /* Cria pequenos pontos azuis usando gradiente radial para simular textura de mapa náutico. */
+  background-image: radial-gradient(#162d50 1px, transparent 1px);
+  /* Define o tamanho do quadrado onde cada ponto se repete (20px por 20px). */
+  background-size: 20px 20px;
+  /* Cor padrão do texto principal (cinza bem escuro). */
+  color: #2b2b2b;
+  /* Altura da linha (1.6x o tamanho da fonte) para melhorar o conforto de leitura. */
+  line-height: 1.6;
+  
+  /* Ativa o CSS Grid na estrutura inteira da página. */
+  display: grid;
+  /* Cria 3 colunas: laterais flexíveis (1fr) e coluna central limitada a no máximo 800px. O '0' no minmax(0, 800px) impede rolagem horizontal no celular. */
+  grid-template-columns: 1fr minmax(0, 800px) 1fr;
+  /* Cria 4 linhas: Header (auto), Nav (auto), Main (1fr - ocupa todo o espaço vazio) e Footer (auto). */
+  grid-template-rows: auto auto 1fr auto;
+  /* Garante que o body tenha no mínimo 100% da altura da janela (viewport), mantendo o rodapé sempre no fim da tela. */
+  min-height: 100vh;
+}
+
+/* ==========================================================================
+3. CABEÇALHO (Ocupa as 3 colunas do Grid)
+   ========================================================================== */
+#cabecalho-principal {
+  /* Faz o cabeçalho atravessar da linha de grade 1 até a 4 (ocupando todas as 3 colunas de ponta a ponta). */
+  grid-column: 1 / 4;
+  /* Posiciona o cabeçalho na primeira linha do Grid do body. */
+  grid-row: 1;
+  
+  /* Azul ainda mais escuro para destacar o topo. */
+  background-color: #06101e;
+  /* Mantém a textura pontilhada (no celular, o navio fica oculto para não poluir atrás do texto). */
+  background-image: radial-gradient(#162d50 1px, transparent 1px);
+  background-size: 20px 20px;
+  /* Cor do texto branca. */
+  color: #ffffff;
+  /* Centraliza os textos horizontalmente. */
+  text-align: center;
+  /* Espaçamento interno usando unidades relativas 'rem' (baseadas na fonte raiz de 16px). */
+  padding: 2rem 1rem 0.75rem 1rem;
+}
+
+/* Pseudo-elemento ::before insere conteúdo decorativo antes do conteúdo real do cabeçalho sem precisar poluir o HTML. */
+#cabecalho-principal::before {
+  /* Insere os emojis temáticos de barco e chapéu de palha. */
+  content: "⛵ 👒";
+  /* Tamanho dos ícones (2x o tamanho da fonte raiz = 32px). */
+  font-size: 2rem;
+  /* Faz os ícones ocuparem uma linha própria acima do título <h1>. */
+  display: block;
+  /* Aproxima levemente os ícones do título abaixo. */
+  margin-bottom: -5px;
+  /* Aplica a animação 'navegar' com duração de 4s, suavização ease-in-out, repetição infinita e vai-e-volta (alternate). */
+  animation: navegar 4s ease-in-out infinite alternate;
+}
+
+/* Define os quadros-chave (etapas) da animação de balanço do navio. */
+@keyframes navegar {
+  /* Estado inicial: posição normal e inclinação de -2 graus. */
+  0% { transform: translateY(0) rotate(-2deg); }
+  /* Estado final: sobe 8px e inclina +3 graus. */
+  100% { transform: translateY(-8px) rotate(3deg); }
+}
+
+#cabecalho-principal h1 {
+  /* Tamanho reduzido no mobile (1.6rem ≈ 25.6px) para o nome não quebrar feio em telas estreitas. */
+  font-size: 1.6rem;
+  /* Peso máximo da fonte (Black). */
+  font-weight: 900;
+  /* Amarelo dourado pirata. */
+  color: #ffca28;
+  /* Transforma todas as letras em maiúsculas via CSS. */
+  text-transform: uppercase;
+  /* Espaçamento entre as letras. */
+  letter-spacing: 1px;
+  /* Sombra sólida vermelha deslocada 2px para baixo e para a direita. */
+  text-shadow: 2px 2px 0px #d92323;
+  margin-bottom: 5px;
+}
+
+.subtitulo-cabecalho {
+  font-size: 0.9rem;
+  color: #a0aec0;
+  /* Deixa o subtítulo em itálico. */
+  font-style: italic;
+}
+
+/* ==========================================================================
+4. MENU NAVEGAÇÃO (Ocupa as 3 colunas, mas organiza botões com Flexbox)
+   ========================================================================== */
+.menu-navegacao {
+  /* Ocupa a largura total das 3 colunas do Grid. */
+  grid-column: 1 / 4;
+  /* Posiciona o menu na segunda linha do Grid do body. */
+  grid-row: 2;
+  
+  background-color: #06101e;
+  padding: 0.5rem 1rem 1.5rem 1rem;
+  /* Linha vermelha grossa na base do menu para separar o topo do conteúdo. */
+  border-bottom: 5px solid #d92323;
+  /* Sombra projetada abaixo da barra de navegação. */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.menu-navegacao ul {
+  /* Remove as bolinhas padrão da lista <ul>. */
+  list-style: none;
+  /* Ativa o Flexbox na lista de links. */
+  display: flex;
+  /* Abordagem Mobile-First: empilha os botões verticalmente no celular para facilitar o toque. */
+  flex-direction: column;
+  /* Centraliza os botões na coluna. */
+  align-items: center;
+  /* Espaço uniforme entre cada botão. */
+  gap: 0.65rem;
+}
+
+.menu-navegacao a {
+  /* Permite definir largura mínima e padding vertical no link (que originalmente é inline). */
+  display: inline-block;
+  /* Garante que todos os botões tenham a mesma largura mínima no menu vertical do celular. */
+  min-width: 180px;
+  text-align: center;
+  color: #ffffff;
+  /* Remove o sublinhado padrão dos links. */
+  text-decoration: none;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  padding: 8px 18px;
+  /* Arredonda as pontas em formato de pílula. */
+  border-radius: 20px;
+  background-color: #162d50;
+  border: 2px solid #ffca28;
+  /* Suaviza qualquer mudança visual (cor, posição, sombra) em 0.3 segundos. */
+  transition: all 0.3s ease;
+}
+
+/* Estilo aplicado quando o mouse passa por cima do link. */
+.menu-navegacao a:hover {
+  background-color: #d92323;
+  color: #ffffff;
+  border-color: #ffffff;
+  /* Levanta o botão 3px suavemente. */
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(217, 35, 35, 0.5);
+}
+
+/* Destaca o link da página atual com fundo dourado e texto escuro. */
+.menu-navegacao a.ativo {
+  background-color: #ffca28;
+  color: #06101e;
+}
+
+/* ==========================================================================
+5. CONTEÚDO PRINCIPAL (Coluna do meio do Grid)
+   ========================================================================== */
+.conteudo-principal {
+  /* Trava o conteúdo na coluna 2 (a coluna central do Grid definido no body). */
+  grid-column: 2;
+  /* Posiciona o conteúdo na linha 3 do Grid. */
+  grid-row: 3;
+  
+  padding: 1.5rem 1rem;
+  /* Ocupa 100% da largura disponível na coluna central. */
+  width: 100%;
+  /* Centraliza o bloco horizontalmente caso haja margem livre. */
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+6. CARTÕES DE SEÇÃO
+   ========================================================================== */
+.secao-cartao {
+  /* Cor de papel pergaminho antigo. */
+  background-color: #f9f3e3;
+  /* Borda marrom estilo moldura de mapa. */
+  border: 3px solid #8c6d3f;
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.secao-cartao h2 {
+  color: #06101e;
+  font-size: 1.25rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-bottom: 1.1rem;
+  /* Linha tracejada vermelha abaixo do subtítulo. */
+  border-bottom: 3px dashed #d92323;
+  padding-bottom: 8px;
+}
+
+/* Insere automaticamente o símbolo de Berries (moeda de One Piece) antes de cada título <h2>. */
+.secao-cartao h2::before {
+  content: "฿ ";
+  color: #d92323;
+  font-weight: 900;
+}
+
+/* ==========================================================================
+7. REQUISITO 2: GRID LAYOUT PARA OS NOVOS CARTÕES (Mobile-first: 1 coluna)
+   ========================================================================== */
+.grid-cartoes {
+  /* Ativa o CSS Grid na vitrine de habilidades/projetos. */
+  display: grid;
+  /* Mobile-First (< 768px): exibe exatamente 1 cartão por linha ocupando toda a largura. */
+  grid-template-columns: 1fr;
+  /* Espaçamento de 20px entre os cartões. */
+  gap: 20px; 
+}
+
+/* ==========================================================================
+8. REQUISITO 3: FLEXBOX DENTRO DOS CARTÕES
+   ========================================================================== */
+.cartao-habilidade {
+  background-color: #f4ebd0;
+  border: 2px solid #8c6d3f;
+  border-radius: 8px;
+  padding: 20px;
+  
+  /* Ativa o Flexbox dentro de cada cartão individual. */
+  display: flex;
+  /* Organiza título, texto e tags em coluna (de cima para baixo). */
+  flex-direction: column; 
+  gap: 15px; 
+  /* Distribui o espaço vertical para manter o alinhamento interno. */
+  justify-content: space-between; 
+  
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cartao-habilidade:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(140, 109, 63, 0.5);
+}
+
+.cartao-titulo {
+  color: #d92323;
+  font-size: 1.15rem;
+  text-transform: uppercase;
+}
+
+.cartao-conteudo {
+  font-size: 0.95rem;
+  /* Faz o parágrafo crescer para ocupar o espaço vazio do cartão, empurrando as tags sempre para o rodapé do card. */
+  flex-grow: 1; 
+}
+
+.cartao-tags {
+  /* Alinha as etiquetas (#Web, #Frontend...) lado a lado. */
+  display: flex;
+  /* Permite que as etiquetas quebrem para a linha de baixo se faltar espaço horizontal. */
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.cartao-tags span {
+  background-color: #162d50;
+  color: #ffca28;
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 12px;
+  text-transform: uppercase;
+}
+
+/* ==========================================================================
+9. ELEMENTOS DE DESIGN (Foto, Lista, Form)
+   ========================================================================== */
+.foto-perfil {
+  width: 150px;
+  height: 150px;
+  /* Recorta e preenche o círculo sem distorcer a proporção original da foto. */
+  object-fit: cover;
+  border: 5px solid #d92323;
+  /* Transforma o quadrado 150x150 em um círculo perfeito. */
+  border-radius: 50%;
+  /* Permite centralizar a imagem com margin auto. */
+  display: block;
+  margin: 0 auto 15px auto;
+  box-shadow: 0 0 15px rgba(217, 35, 35, 0.4);
+  transition: transform 0.3s ease;
+}
+
+.foto-perfil:hover {
+  /* Aumenta 8% e gira 4 graus ao passar o mouse. */
+  transform: scale(1.08) rotate(4deg);
+}
+
+.lista-interesses { list-style: none; padding-left: 0; }
+.lista-interesses li {
+  margin-bottom: 12px;
+  /* O padding esquerdo maior (40px) reserva espaço para o ícone de espadas posicionado absolutamente. */
+  padding: 10px 15px 10px 40px;
+  background-color: #efe5cb;
+  border-left: 5px solid #166534;
+  border-radius: 4px;
+  font-weight: 700;
+  /* Serve de referência de coordenadas para o ::before que usa position: absolute. */
+  position: relative;
+}
+.lista-interesses li::before {
+  content: "⚔️";
+  /* Posiciona o ícone livremente dentro do <li>. */
+  position: absolute;
+  left: 12px;
+  /* Desce 50% da altura do item e sobe metade da própria altura para centralizar verticalmente com precisão. */
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.1rem;
+}
+
+fieldset {
+  /* Borda dupla de 3px na moldura do formulário. */
+  border: 3px double #8c6d3f;
+  border-radius: 10px;
+  padding: 1.1rem;
+  background-color: #f4ebd0;
+}
+legend {
+  font-weight: 900;
+  color: #d92323;
+  text-transform: uppercase;
+  padding: 0 12px;
+  font-size: 1.05rem;
+  letter-spacing: 1px;
+}
+.campo-grupo { margin-bottom: 18px; }
+.campo-grupo label {
+  /* Faz o rótulo ficar em uma linha própria acima da caixa de texto. */
+  display: block;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: #06101e;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
+.campo-grupo input, .campo-grupo textarea {
+  /* Faz os campos ocuparem 100% da largura interna do formulário em qualquer dispositivo. */
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #8c6d3f;
+  border-radius: 6px;
+  font-size: 1rem;
+  /* Faz input e textarea herdarem a fonte Montserrat do body (por padrão eles usam fonte do sistema). */
+  font-family: inherit;
+  background-color: #ffffff;
+}
+/* Destaca o campo quando o usuário clica ou digita nele. */
+.campo-grupo input:focus, .campo-grupo textarea:focus {
+  outline: none;
+  border-color: #d92323;
+  box-shadow: 0 0 8px rgba(217, 35, 35, 0.3);
+}
+
+/* flex-wrap permite que os botões quebrem linha em telas muito estreitas sem estourar o formulário. */
+.botoes-grupo { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 20px; }
+.btn {
+  padding: 12px 25px;
+  font-size: 1rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 8px;
+  /* Mostra a "mãozinha" ao passar o mouse. */
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.btn-enviar { background-color: #d92323; color: #ffffff; box-shadow: 0 4px 0px #901313; }
+.btn-enviar:hover { background-color: #ffca28; color: #06101e; box-shadow: 0 4px 0px #c79a00; transform: translateY(-2px); }
+.btn-limpar { background-color: #8c6d3f; color: #ffffff; box-shadow: 0 4px 0px #5c4728; }
+.btn-limpar:hover { background-color: #a6834c; transform: translateY(-2px); }
+
+/* ==========================================================================
+10. REQUISITO 4: RODAPÉ (Ocupa as 3 colunas do Grid)
+   ========================================================================== */
+#rodape-principal {
+  /* Atravessa todas as 3 colunas na horizontal. */
+  grid-column: 1 / 4;
+  /* Fica na última linha do Grid do body. */
+  grid-row: 4;
+  
+  background-color: #06101e;
+  color: #ffca28;
+  text-align: center;
+  padding: 25px 15px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  border-top: 4px solid #d92323;
+}
+
+/* Estiliza o link do GitHub no rodapé sem precisar de CSS inline no HTML. */
+#rodape-principal a {
+  color: #ffca28;
+}
+
+/* ==========================================================================
+11. RESPONSIVIDADE - TABLETS (768px até 1023px)
+   ========================================================================== */
+/* Media Query Mobile-First: estas regras só são ativadas quando a largura da tela for >= 768px. */
+@media (min-width: 768px) {
+  #cabecalho-principal {
+    /* Em telas maiores há espaço lateral livre para exibir o SVG da silhueta do navio pirata sem atrapalhar o texto. */
+    background-image: 
+      url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="%23ffca28" opacity="0.15"><path d="M56 40c-2 0-4 1-5 2-3-5-8-9-15-10 1-3 3-5 5-7h-8c-2 2-4 5-4 8-1 0-2 0-3 0-5 0-10 2-14 6-2-1-4-2-6-2-4 0-7 3-7 7 0 2 1 4 2 5-3 3-5 7-5 11h60c0-6-4-11-9-15-1 0-1-3 0-5zM32 6l-6 10h12L32 6z"/></svg>'),
+      radial-gradient(#162d50 1px, transparent 1px);
+    background-repeat: no-repeat, repeat;
+    background-position: right 30px center, center;
+    background-size: 140px auto, 20px 20px;
+    padding: 40px 20px 10px 20px;
+  }
+
+  /* Amplia os ícones e o título principal agora que há largura de tela suficiente. */
+  #cabecalho-principal::before {
+    font-size: 2.5rem;
+  }
+
+  #cabecalho-principal h1 {
+    font-size: 2.4rem;
+    letter-spacing: 2px;
+  }
+
+  .subtitulo-cabecalho {
+    font-size: 1rem;
+  }
+
+  .menu-navegacao {
+    padding: 0 0 25px 0;
+  }
+
+  /* Muda a direção do Flexbox do menu de coluna (vertical) para linha (horizontal). */
+  .menu-navegacao ul {
+    flex-direction: row;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  /* Libera os botões para terem apenas a largura do próprio texto + padding. */
+  .menu-navegacao a {
+    min-width: auto;
+  }
+
+  /* Restaura os espaçamentos maiores nos cartões e formulários. */
+  .conteudo-principal {
+    padding: 40px 20px;
+  }
+
+  .secao-cartao {
+    padding: 30px;
+    margin-bottom: 30px;
+  }
+
+  .secao-cartao h2 {
+    font-size: 1.5rem;
+  }
+
+  fieldset {
+    padding: 25px;
+  }
+
+  /* Requisito 3: Altera o Grid dos cartões de 1 coluna para 2 colunas iguais (1fr 1fr) entre 768px e 1023px. */
+  .grid-cartoes {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ==========================================================================
+12. RESPONSIVIDADE - DESKTOP (>= 1024px)
+   ========================================================================== */
+/* Segunda Media Query Mobile-First: ativada quando a viewport atinge 1024px ou mais. */
+@media (min-width: 1024px) {
+  body {
+    /* Amplia a coluna central de 800px para 1024px para que os 3 cartões lado a lado tenham respiro adequado. */
+    grid-template-columns: 1fr minmax(0, 1024px) 1fr;
+  }
+
+  /* Requisito 3: Altera o Grid dos cartões para 3 colunas iguais em telas de computador (>= 1024px). */
+  .grid-cartoes {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

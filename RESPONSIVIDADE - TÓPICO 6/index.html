@@ -1,0 +1,185 @@
+<!-- Declara ao navegador que o documento segue o padrão HTML5 -->
+<!DOCTYPE html>
+
+<!-- Elemento raiz da página; lang="pt-BR" ajuda leitores de tela e mecanismos de busca -->
+<html lang="pt-BR">
+
+<!-- Cabeçalho técnico do documento: guarda metadados invisíveis na tela, mas essenciais para o navegador -->
+<head>
+    <!-- Define a codificação UTF-8 para exibir acentos e símbolos (como ç, ã, ฿) sem erros -->
+    <meta charset="UTF-8">
+
+    <!-- FUNDAMENTAL PARA RESPONSIVIDADE (Tópico 6): faz a largura da página acompanhar a largura real da tela do dispositivo, evitando que o celular diminua o site inteiro como se fosse um desktop -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Título exibido na aba do navegador -->
+    <title>Página Pessoal - André Nunes de Carvalho</title>
+
+    <!-- Conecta a folha de estilos externa (caminho relativo entrando na pasta css/) -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<!-- Corpo do documento: tudo que aparece visualmente na janela do navegador fica aqui -->
+<body>
+
+    <!-- Tag semântica de cabeçalho; usa 'id' porque é um elemento único na página -->
+    <header id="cabecalho-principal">
+        <!-- Título principal (h1): deve existir apenas um por página por questão de semântica e hierarquia -->
+        <h1>André Nunes de Carvalho</h1>
+        <!-- &amp; é uma entidade HTML para representar o caractere '&' de forma segura no código -->
+        <p class="subtitulo-cabecalho">Estudante de Informática para Internet &amp; Engenharia de Software</p>
+    </header>
+
+    <!-- Tag semântica exclusiva para blocos de links principais de navegação -->
+    <nav class="menu-navegacao">
+        <!-- Lista não ordenada (ul): padrão semântico para agrupar itens de menu -->
+        <ul>
+            <!-- A classe "ativo" destaca visualmente em qual página o usuário está no momento -->
+            <li><a href="index.html" class="ativo">Início</a></li>
+            <!-- Link relativo para outra página HTML dentro do mesmo projeto -->
+            <li><a href="sobre.html">Sobre Mim</a></li>
+            <!-- Link âncora (#contato): rola a página até o elemento que possui id="contato" -->
+            <li><a href="#contato">Contato</a></li>
+        </ul>
+    </nav>
+
+    <!-- Tag semântica que delimita o conteúdo principal e exclusivo da página -->
+    <main class="conteudo-principal">
+
+        <!-- Agrupa um bloco temático de conteúdo; usa 'class' porque o visual se repete em várias seções -->
+        <section class="secao-cartao">
+            <!-- Subtítulo de segundo nível (h2) -->
+            <h2>Apresentação</h2>
+
+            <!-- Contêiner auxiliar (div) criado para o Flexbox alinhar foto e texto em coluna no mobile e em linha no tablet/desktop -->
+            <div class="apresentacao-conteudo">
+                <!-- 'alt' descreve a imagem para acessibilidade e aparece caso o arquivo falhe ao carregar -->
+                <img src="img/foto.jpeg" alt="Foto de André Nunes de Carvalho" class="foto-perfil">
+
+                <!-- Agrupa o texto ao lado da foto no layout flex -->
+                <div class="apresentacao-texto">
+                    <!-- <strong> indica importância semântica no texto (além do negrito visual) -->
+                    <p>Bem-vindo à minha página pessoal! Esta página foi desenvolvida na disciplina de <strong>Programação Web I</strong>.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Segunda seção temática -->
+        <section class="secao-cartao">
+            <h2>Meus Interesses &amp; Tecnologias</h2>
+            <ul class="lista-interesses">
+                <li>Animes, Mangás e Cultura Geek</li>
+                <li>Desenvolvimento Web (HTML5 &amp; CSS3)</li>
+                <li>Lógica de Programação e Algoritmos</li>
+                <li>Banco de Dados e Engenharia de Software</li>
+                <li>Leitura de Romances de Mistério</li>
+                <li>Jogos de Estratégia e Quebra-Cabeças</li>
+                <li>Gosto de Paquerar a Vívian lá de Sorocaba (item indispensável da lista)</li>
+            </ul>
+        </section>
+
+        <!-- Terceira seção temática: vitrine de cartões -->
+        <section class="secao-cartao">
+            <h2>Arsenal Tecnológico &amp; Projetos</h2>
+            
+            <!-- Contêiner pai do CSS Grid: alterna entre 1 coluna (<768px), 2 colunas (768px-1023px) e 3 colunas (>=1024px) -->
+            <div class="grid-cartoes">
+
+                <!-- <article> representa um conteúdo independente e autocontido (ideal para cards) -->
+                <article class="cartao-habilidade">
+                    <h3 class="cartao-titulo">HTML5 &amp; CSS3</h3>
+                    <p class="cartao-conteudo">O "Haki do Armamento" do front-end. Utilizados para criar a estrutura semântica e a estilização visual completa desta página temática.</p>
+                    <!-- <span> é um elemento genérico em linha (inline), usado aqui para estilizar pequenas etiquetas (tags) -->
+                    <div class="cartao-tags">
+                        <span>#Web</span>
+                        <span>#Frontend</span>
+                        <span>#Design</span>
+                    </div>
+                </article>
+
+                <article class="cartao-habilidade">
+                    <h3 class="cartao-titulo">Lógica com Python</h3>
+                    <p class="cartao-conteudo">A "Espada da Razão". Resolução de algoritmos diários e estudos práticos utilizando a IDE Thonny para construir uma base sólida.</p>
+                    <div class="cartao-tags">
+                        <span>#Python</span>
+                        <span>#Lógica</span>
+                        <span>#Algoritmos</span>
+                    </div>
+                </article>
+
+                <article class="cartao-habilidade">
+                    <h3 class="cartao-titulo">Bancos de Dados</h3>
+                    <p class="cartao-conteudo">Como ler um "Poneglyph". Estudos teóricos focados em modelagem de dados relacional, diagrama entidade-relacionamento e noções em SQL.</p>
+                    <div class="cartao-tags">
+                        <span>#SQL</span>
+                        <span>#Modelagem</span>
+                        <span>#Dados</span>
+                    </div>
+                </article>
+
+                <article class="cartao-habilidade">
+                    <h3 class="cartao-titulo">Mercado Imobiliário</h3>
+                    <p class="cartao-conteudo">Habilidade de "Navegação" no mundo real. Prospecção em Barbacena, análise de tráfego pago, captação e contato direto com clientes.</p>
+                    <div class="cartao-tags">
+                        <span>#Vendas</span>
+                        <span>#RE/MAX</span>
+                        <span>#Negócios</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Seção de contato com id="contato" para servir de destino ao link do menu -->
+        <section id="contato" class="secao-cartao secao-formulario">
+            <h2>Entre em contato</h2>
+
+            <!-- 'action' define para onde os dados iriam; 'method="post"' indica envio no corpo da requisição -->
+            <form action="#" method="post">
+                <!-- <fieldset> agrupa campos relacionados de um formulário com uma moldura -->
+                <fieldset>
+                    <!-- <legend> dá um título semântico ao grupo do fieldset -->
+                    <legend>Informações de Contato</legend>
+
+                    <div class="campo-grupo">
+                        <!-- O atributo 'for="nome"' vincula este rótulo ao input de 'id="nome"' (clicar no texto foca o campo) -->
+                        <label for="nome">Nome:</label>
+                        <!-- 'name' identifica o dado quando o formulário é enviado -->
+                        <input type="text" id="nome" name="nome" placeholder="Seu nome completo">
+                    </div>
+
+                    <div class="campo-grupo">
+                        <label for="email">Email:</label>
+                        <!-- type="email" ativa validação nativa de formato de e-mail e 'required' impede envio vazio -->
+                        <input type="email" id="email" name="email" placeholder="seu.email@exemplo.com" required>
+                    </div>
+
+                    <div class="campo-grupo">
+                        <label for="assunto">Assunto:</label>
+                        <input type="text" id="assunto" name="assunto" placeholder="Assunto da mensagem">
+                    </div>
+
+                    <div class="campo-grupo">
+                        <label for="mensagem">Mensagem:</label>
+                        <!-- <textarea> cria uma caixa de texto de múltiplas linhas; 'rows' define a altura inicial -->
+                        <textarea id="mensagem" name="mensagem" rows="5" placeholder="Digite sua mensagem aqui..."></textarea>
+                    </div>
+
+                    <div class="botoes-grupo">
+                        <!-- type="submit" dispara o envio e as validações do formulário -->
+                        <button type="submit" class="btn btn-enviar">Enviar</button>
+                        <!-- type="reset" apaga o que foi digitado e restaura os campos ao estado inicial -->
+                        <button type="reset" class="btn btn-limpar">Limpar</button>
+                    </div>
+                </fieldset>
+            </form>
+        </section>
+
+    </main>
+
+    <!-- Tag semântica de rodapé; &copy; gera o símbolo de copyright (©) -->
+    <footer id="rodape-principal">
+        <p>&copy; 2026 André Nunes de Carvalho - IF Sudeste MG | Barbacena</p>
+    </footer>
+
+</body>
+</html>
